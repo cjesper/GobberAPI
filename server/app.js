@@ -1,3 +1,5 @@
+require('dotenv').load();
+
 var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
@@ -34,9 +36,9 @@ WebSocket.init(app);
 var port = (process.env.PORT || 4001);
 
 cloudinary.config({
-  cloud_name : "gobblog",
-  api_key: "519199696494259",
-  api_secret: "gvAH6E2rBlfDuQKCqEn5yF_8eiI"  
+    cloud_name : "gobblog",
+    api_key : process.env.api_key,
+    api_secret : process.env.api_secret
 })
 
 
@@ -60,7 +62,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'views')));
-app.use(cors({ origin: 'null', credentials: true }));
+app.use(cors({ origin: '*', credentials: true }));
 
 app.use('/', index);
 app.use('/posts', posts);
@@ -76,7 +78,9 @@ app.use('/authorize', authorize);
 app.use('/logincallback', logincallback);
 
 app.use(function (req, res, next) {
-    req.headers.origin = req.headers.origin || req.headers.host; 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //req.headers.origin = req.headers.origin || req.headers.host; 
     next();
 });
 

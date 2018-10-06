@@ -42,9 +42,7 @@ router.post('/', upload.single('pic') , function(req, res, next) {
         var ts = Date.now() / 1000;
         var hashtags = [];
 
-        console.log(sender);
-
-    // Stuff for image 
+        // Stuff for image 
         var upload = require('cloudinary').uploader.upload; 
         if (req.file) { 
         upload(req.file.path, function (result) {
@@ -139,6 +137,7 @@ router.post('/', upload.single('pic') , function(req, res, next) {
                             } else {
                                 WebSocket.emit_to_client(sender, 'allPosts', posts);
                                 WebSocket.emit('newPosts', sender);
+                                console.log("Emitted!")
                             }
                         });
                     } else {
