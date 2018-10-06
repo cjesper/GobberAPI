@@ -28,12 +28,12 @@ var authorize = require('./routes/authorize');
 var logincallback = require('./routes/logincallback');
 
 var WebSocket = require('./websocket');
-var remote_url = 'mongodb://localhost:27017/gobblogg';
+var remote_url = 'mongodb://localhost:27018/gobblogg';
 
 var app = express();
 app.use(cors());
 WebSocket.init(app);
-var port = (process.env.PORT || 4001);
+var port = 4999;
 
 cloudinary.config({
     cloud_name : "gobblog",
@@ -80,7 +80,6 @@ app.use('/logincallback', logincallback);
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //req.headers.origin = req.headers.origin || req.headers.host; 
     next();
 });
 

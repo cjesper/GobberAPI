@@ -1,6 +1,6 @@
 var http = require('http');
 var socketio = require('socket.io');
-var allowedOrigins = "http://localhost:* http://127.0.0.1:* gobber.carlssonjesper.com:*"
+var allowedOrigins = "http://localhost:* http://127.0.0.1:* gobber.carlssonjesper.com:* 178.62.52.134:*"
 class WebSocket {
   init(app) {
     this.server = http.Server(app);
