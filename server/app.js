@@ -18,7 +18,7 @@ var cloudinary = require('cloudinary');
 var index = require('./routes/index');
 var posts = require('./routes/posts');
 var newpost = require('./routes/newpost');
-var updatepost = require('./routes/updatePost');
+var updatepost = require('./routes/updatepost');
 var newcomment = require('./routes/newcomment')
 var fetchcomments = require('./routes/fetchcomments');
 var newimage = require('./routes/newimage');
@@ -78,8 +78,16 @@ app.use('/authorize', authorize);
 app.use('/logincallback', logincallback);
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //res.header("Access-Control-Allow-Origin", "*");
+    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    //res.setHeader('Access-Control-Allow-Origin', 'http://gobber.jespercarlsson.com');
+
+    //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    //res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    //res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 

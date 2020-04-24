@@ -12,6 +12,7 @@ router.post('/', function(req, res, next) {
     var upvote_J = req.body.Jvotes; 
     var upvote_G = req.body.Gvotes; 
     var provided_id = req.body.id;
+	console.log(req.body)
     Post.update(
         {
           _id : provided_id},
