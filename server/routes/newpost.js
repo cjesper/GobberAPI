@@ -79,7 +79,7 @@ router.post('/', upload.single('pic') , function(req, res, next) {
                 {unique_id : unique_id},
                 {nick: provided_nick,
                   text: provided_text,
-                  img : result.url,
+                  img : result.secure_url,
                   color: chosen_color,
                     hash_tags : hashtags,
                   timeStamp : ts},
