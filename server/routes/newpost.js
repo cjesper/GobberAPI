@@ -60,8 +60,21 @@ router.post('/', upload.single('pic') , function(req, res, next) {
                 }
             }
             if (hashtags != []) {
-              console.log(hashtags);
-            } 
+                for (var i = 0; i < hashtags.length; i++) {
+                    console.log(hashtags);
+                    Hashtag.update(
+                      {hashtag : hashtags[i]},
+                      {hashtag : hashtags[i]},
+                      {upsert: true, new: true},
+                      function (err, result) {
+                        if (!err) {
+                          console.log(result);
+                        }
+                        } 
+                    )
+                }
+            }
+
             Post.update(
                 {unique_id : unique_id},
                 {nick: provided_nick,

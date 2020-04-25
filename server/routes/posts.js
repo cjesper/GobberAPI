@@ -31,6 +31,7 @@ router.get('/', function(req, res, next) {
                 res.send(err);
                 throw err;
               } else {
+									console.log(result)
                   res.send(result);
             }
         });
